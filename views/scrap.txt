@@ -1,0 +1,62 @@
+
+      var getTodos = function () {
+          var updates = "";
+
+#Gets data from database via ajax
+          $.get("/ajax/all")
+                  .done(function (data) {
+                      alert(data);
+                      var todos = JSON.parse(data);
+                      for (var i = 0; i < todos.length; i++) {
+                          updates += todos[i].title + "";
+                          updates += todos[i].content + "";
+                          updates += todos[i].created_at + "";
+                          updates += todos[i].done + "";
+
+                          $('#ajaxTarget').append(updates);
+
+                      }
+
+                  });
+
+
+      }
+
+
+
+previously working jquery post request. get request not yet working
+
+
+//      $('#ajaxbtn').click(function () {
+//          addNewTodo();
+//          getTodos();
+//      });
+//
+//
+//// serialize input field by name
+//
+//      //addNewToDO is jqxhr object
+//      var addNewTodo;
+//      addNewTodo = function () {
+//          var content = $('#newTodo').val();
+//          alert(content);
+//          $.post('/', {content: content}).done(function (data) {
+//          });
+//      };
+//
+//      var getTodos;
+//      getTodos = function () {
+//
+////#Gets data from database via ajax
+//        $.get('/')
+//           .done(function (data) {
+//            alert(data);
+//              var atodos = JSON.parse(data);
+//                      alert(atodos);
+//            $('#ajaxTarget').html(atodos);
+//
+//
+//                  });
+//
+//
+//      };

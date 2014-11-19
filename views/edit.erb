@@ -1,0 +1,7 @@
+<% if @todo %>
+    <form action="/<%= @todo.id %>" method="post" id="edit">
+      <input type="hidden" name="_method" value="put">
+      <textarea name="content"><%= @todo.content %></textarea>
+      <input type="checkbox" name="done" <%= "checked" if @todo.done %>> <input type="submit">
+    </form> <% else %>
+    <p>Todo not found.</p> <% end %>

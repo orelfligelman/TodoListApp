@@ -1,0 +1,61 @@
+<!--<section id = "add">-->
+  <!--<form action="/" method="post">-->
+    <!--<textarea id = "new_Todo" name = "content" placeholder="Todos"> </textarea>-->
+  <!--<input type = "submit" value = "Add Todo Item">-->
+  <!--&lt;!&ndash;<button id = "ajaxbtn"> Add New item to to do list </button>&ndash;&gt;-->
+  <!--</form>-->
+<!--</section>-->
+
+
+
+<section id="add">
+  <form action="/" method="post">
+    <textarea id="new_todo" name="content" placeholder="Todos&hellip;"></textarea>
+    <input type="submit" value="Add Todo item">
+  </form>
+</section>
+</div>
+
+
+
+<section>
+  <ul>
+    <% @todos.each do |item| %> <li>
+    <p>
+      <%= item.content %>
+      <!--<input type="checkbox" name="done" <%= "checked" if item.done %> disabled> <span><a href="/<%= item.id %>">[Edit]</a></span>-->
+      <!--<a href="/<%= item.id %>/delete">[Del]</a>-->
+    <!--</p> </li>-->
+    <% end %>
+  </ul>
+</section>
+
+
+
+
+<script>
+  $(document).ready(function() {
+$('#add').on('submit',function(e){
+    e.preventDefault();
+    $.ajax('/',{
+        type:'post',
+        data:{"content": $('#new_todo').val()},
+        success: function(result){
+
+            $('header').remove();
+            $('#main').html(result)
+             }
+        });
+    });
+ });
+</script>
+
+
+
+
+
+
+
+
+
+
